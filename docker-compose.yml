@@ -2,10 +2,16 @@ version: '3.8'
 
 services:
   piano-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: node:18-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run build && npx serve -s build -p 3000"
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
     environment:
       - NODE_ENV=production
+
+volumes:
+  node_modules:
