@@ -2,12 +2,9 @@ version: "3.8"
 
 services:
   piano-app:
-    image: node:18-alpine
-    working_dir: /app
-    command: sh -c "npm install && npm run build && npm run serve"
+    build: .
+    image: piano-midi-player:latest
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
     environment:
       NODE_ENV: production
