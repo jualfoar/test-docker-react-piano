@@ -2,8 +2,10 @@ version: "3.8"
 
 services:
   piano-app:
-    build: .
-    image: piano-midi-player:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: piano-midi-player
     ports:
       - "3000:3000"
     environment:
